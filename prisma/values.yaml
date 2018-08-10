@@ -3,11 +3,11 @@ prisma:
   port: '4466'
 
 db:
-    host: postgres
-    port: '5432'
-    user: prisma
-    password: prisma
-    migrations: true
+  host: postgres
+  port: '5432'
+  user: prisma
+  password: prisma
+  migrations: "true"
   storage:
     class: ""
     size: 10Gi

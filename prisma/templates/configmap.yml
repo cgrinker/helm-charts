@@ -13,9 +13,9 @@ data:
     # managementApiSecret: my-secret
     databases:
       default:
-        connector: {{ .Values.prisma.db.connector }}
-        host: {{ .Values.prisma.db.host }}
-        port: {{ .Values.prisma.db.port }}
-        user: {{ .Values.prisma.db.user }}
-        password: {{ .Values.prisma.db.password }}
+        connector: postgres
+        host: {{ .Release.Name }}-postgres
+        port: {{ .Values.db.port }}
+        user: {{ .Values.db.user }}
+        password: {{ .Values.db.password }}
         migrations: true
