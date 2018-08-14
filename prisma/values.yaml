@@ -1,7 +1,7 @@
 prisma:
   replicas: '1'
   port: '4466'
-
+  
 db:
   host: postgres
   port: '5432'
@@ -9,5 +9,10 @@ db:
   password: prisma
   migrations: "true"
   storage:
-    class: ""
+    class: "moria"
     size: 10Gi
+
+api:
+  container: cgrinker/prismatic-xdocument:0.1.0
+  port: "4000"
+

@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: api
+  labels:
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    name: {{ .Release.Name }}-api 
+    app: {{ .Release.Name }}-api
+spec:
+  replicas: {{ .Values.api.replicas }}
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        name: {{ .Release.Name }}-api 
+        app: {{ .Release.Name }}-api
+    spec:
+      containers:
+      - name: prisma
+        image: {{ .Values.api.container }}
+        command: ["npm", "run", "prod"]
+        ports:
+          - name: prisma
+            containerPort: {{ .Values.api.port }}
+        env:
+          - name: PRISMA_ENDPOINT
+            value: http://{{ .Release.Name }}-prisma:4466
+          - name: PRISMA_SECRET
+            value: ""
+          - name: PORT
+            value: "{{ .Values.api.port}}"
